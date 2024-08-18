@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Description from '../Description/Description';
 import Feedback from '../Feedback/Feedback';
 import Options from '../Options/Options';
+import Notification from '../Notification/Notification';
 import css from './App.module.css';
 
 export default function App() {
@@ -24,14 +25,7 @@ export default function App() {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedback =
-    totalFeedback > 0
-      ? Math.round(((feedback.good + feedback.neutral) / totalFeedback) * 100)
-      : 0;
-
-  const Notification = ({ message }) => {
-    return <p>{message}</p>;
-  };
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
   return (
     <div className={css.container}>
